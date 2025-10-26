@@ -6,6 +6,10 @@ require Pod::Executable.execute_command('node', ['-p',
   )', __dir__]).strip
 
 platform :ios, min_ios_version_supported
+# Leave `use_modular_headers!` disabled because it can cause module redefinition
+# issues with React Native's generated modulemaps on some setups. If you need
+# modular headers for a specific pod, re-enable with care.
+# use_modular_headers!
 prepare_react_native_project!
 
 linkage = ENV['USE_FRAMEWORKS']
@@ -23,13 +27,28 @@ target 'ChatApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # Some Firebase Swift pods require module maps when built as static libraries.
+  # Enable modular headers for the Google/Firebase low-level pods to avoid
+  # "does not define modules" errors during pod install while keeping
+  # modular headers disabled globally (which can cause RN module redefinition
+  # issues on some setups).
+  pod 'GoogleUtilities', :modular_headers => true
+  pod 'FirebaseCoreInternal', :modular_headers => true
+  pod 'Firebase/CoreOnly', :modular_headers => true
+
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
-    react_native_post_install(
-      installer,
-      config[:reactNativePath],
-      :mac_catalyst_enabled => false,
-      # :ccache_enabled => true
-    )
+      # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+      react_native_post_install(
+        installer,
+        config[:reactNativePath],
+        :mac_catalyst_enabled => false,
+        # :ccache_enabled => true
+      )
+
+      installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+          config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++20'
+        end
+      end
   end
 end

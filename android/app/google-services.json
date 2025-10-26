@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351735077810",
+    "project_id": "chatapp-2b3e8",
+    "storage_bucket": "chatapp-2b3e8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351735077810:android:9b3618280d793cb79f22ab",
+        "android_client_info": {
+          "package_name": "com.woolf.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1vq2uLYrwv_W59wh5EueNcCq1B3sjsw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
