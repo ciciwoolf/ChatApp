@@ -12,7 +12,20 @@
           "package_name": "com.woolf.chatapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "351735077810-vm1gv3iu63rvn64hosc8egjllp1lhtoh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.woolf.chatapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "351735077810-iin4e84l47hmc13ll7m1r65ppi9195c4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB1vq2uLYrwv_W59wh5EueNcCq1B3sjsw8"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351735077810-iin4e84l47hmc13ll7m1r65ppi9195c4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "351735077810-ahl6r8qt0mcnu0mcld6liq7fabga8f3m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.woolf.chatapp"
+              }
+            }
+          ]
         }
       }
     }
