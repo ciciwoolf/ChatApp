@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeFactory = factory
 
     window = UIWindow(frame: UIScreen.main.bounds)
+
+    // Ensure Firebase is configured once before starting React Native
+    if FirebaseApp.app() == nil {
+      FirebaseApp.configure()
+    }
 
     factory.startReactNative(
       withModuleName: "ChatApp",
