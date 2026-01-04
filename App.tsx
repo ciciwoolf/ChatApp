@@ -1,8 +1,8 @@
 import React from 'react';
-import GoogleSignIn from './src/google-signin/GoogleSignIn';
+import CameraGallery from './src/components/camera/CameraGallery';
 
 const App = () => {
-  return <GoogleSignIn />;
+  return <CameraGallery />;
 };
 
 export default App;
