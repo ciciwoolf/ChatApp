@@ -1,8 +1,10 @@
 import React from 'react';
-import CameraGallery from './src/components/camera/CameraGallery';
+import { Text, View } from 'react-native';
 
 const App = () => {
-  return <CameraGallery />;
+  <View style={{ backgroundColor: 'black' }}>
+    <Text>Hello</Text>
+  </View>;
 };
 
 export default App;
