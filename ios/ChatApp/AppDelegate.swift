@@ -2,7 +2,6 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
-import Firebase
 import GoogleSignIn
 
 @main
@@ -24,12 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeFactory = factory
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    
-    // Configure Firebase once before starting React Native
-    if FirebaseApp.app() == nil {
-      FirebaseApp.configure()
-    }
-    
+
     factory.startReactNative(
       withModuleName: "ChatApp",
       in: window,

@@ -7,6 +7,7 @@ import {
   isSuccessResponse,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import { theme, typography, spacing, borderRadius } from '../../styles';
 
 const GoogleSignIn = () => {
   GoogleSignin.configure({
@@ -45,30 +46,61 @@ const GoogleSignIn = () => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: 'black',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text style={{ fontSize: 40, color: 'white' }}>Hello World</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Hello World</Text>
       <Button title="Sign in with Google" onPress={googleSignIn} />
-      <Text style={{ fontSize: 30, color: 'white' }}>
-        {userInfo?.user?.name}
-      </Text>
-      <Text style={{ fontSize: 30, color: 'white' }}>
-        {userInfo?.user?.email}
-      </Text>
-      <Image
-        style={{ height: 100, width: 100, borderRadius: 50 }}
-        source={{ uri: userInfo?.user?.photo }}
-      />
+      {userInfo && (
+        <View style={styles.userInfoContainer}>
+          <Image
+            style={styles.avatar}
+            source={{ uri: userInfo?.user?.photo }}
+          />
+          <Text style={styles.userName}>{userInfo?.user?.name}</Text>
+          <Text style={styles.userEmail}>{userInfo?.user?.email}</Text>
+        </View>
+      )}
     </View>
   );
 };
 
-export default GoogleSignIn;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.background,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.base,
+  },
+  title: {
+    ...typography.h1,
+    color: theme.textPrimary,
+    marginBottom: spacing.xl,
+  },
+  userInfoContainer: {
+    alignItems: 'center',
+    marginTop: spacing.xl,
+    padding: spacing.lg,
+    backgroundColor: theme.backgroundSecondary,
+    borderRadius: borderRadius.md,
+    width: '100%',
+    maxWidth: 300,
+  },
+  avatar: {
+    height: 100,
+    width: 100,
+    borderRadius: borderRadius.full,
+    marginBottom: spacing.md,
+    backgroundColor: theme.border,
+  },
+  userName: {
+    ...typography.h4,
+    color: theme.textPrimary,
+    marginBottom: spacing.xs,
+  },
+  userEmail: {
+    ...typography.body,
+    color: theme.textSecondary,
+  },
+});
 
-const styles = StyleSheet.create({});
+export default GoogleSignIn;

@@ -1,10 +1,15 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
+import { AuthProvider } from './src/contexts/AuthContext';
+import RootNavigator from './src/navigation/RootNavigator';
 
 const App = () => {
-  <View style={{ backgroundColor: 'black' }}>
-    <Text>Hello</Text>
-  </View>;
+  return (
+    <AuthProvider>
+      <StatusBar barStyle="dark-content" />
+      <RootNavigator />
+    </AuthProvider>
+  );
 };
 
 export default App;
